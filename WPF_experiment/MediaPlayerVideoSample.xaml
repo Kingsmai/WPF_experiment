@@ -1,0 +1,50 @@
+﻿<Window x:Class="WPF_experiment.MediaPlayerVideoSample"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_experiment"
+        mc:Ignorable="d"
+        Title="MediaPlayerVideoSample"
+        WindowStartupLocation="CenterOwner"
+        SizeToContent="WidthAndHeight">
+    <Grid>
+        <Grid.RowDefinitions>
+             <!-- 定义两行一列 --> 
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <!-- 媒体播放控件 -->
+        <MediaElement Source="http://stsci-opo.org/STScI-01EVS75AKPFNMQNYPF3HYB51JB.mp4"
+                      x:Name="myPlayer"
+                      Width="1080"
+                      Height="624"
+                      Stretch="Uniform"
+                      LoadedBehavior="Manual" />
+        <StackPanel Grid.Row="1">
+            <!-- 影片时间戳 -->
+            <Label Name="lblStatus"
+                   Content="Not playing..."
+                   HorizontalContentAlignment="Center"
+                   Margin="5" />
+            <!-- 按钮控制（横向排列） -->
+            <WrapPanel HorizontalAlignment="Center">
+                <!-- 设置按钮内外边距 -->
+                <WrapPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Padding"
+                                Value="8, 4, 8, 4" />
+                        <Setter Property="Margin"
+                                Value="8, 0, 0, 8" />
+                    </Style>
+                </WrapPanel.Resources>
+                <Button Name="btnPlay"
+                        Click="btnPlay_Click">Play</Button>
+                <Button Name="btnPause"
+                        Click="btnPause_Click">Pause</Button>
+                <Button Name="btnStop"
+                        Click="btnStop_Click">Stop</Button>
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</Window>
